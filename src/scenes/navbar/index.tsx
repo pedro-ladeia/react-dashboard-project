@@ -45,7 +45,6 @@ const Navbar = (props: Props) => {
           >
             Prediction
           </Link>
-
         </Box>
 
       </FlexBetween>
