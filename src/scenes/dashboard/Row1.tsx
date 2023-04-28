@@ -17,7 +17,7 @@ import {
   BarChart,
   Bar
 
-} from "recharts";
+} from "recharts"; //Graph library
 
 type Props = {};
 
@@ -27,12 +27,12 @@ const Row1 = (props: Props) => {
   console.log('data is: ', data)
 
 
-  const revenue = useMemo(() => {
+  const revenue = useMemo(() => { //Bar graph data
     return (
-      data &&
+      data && //If data is void
       data[0].monthlyData.map(({ month, revenue }) => {
         return {
-          name: month.substring(0, 3),
+          name: month.substring(0, 3), //Taking the 3 first letters
           revenue: revenue,
         };
       })
@@ -41,7 +41,7 @@ const Row1 = (props: Props) => {
 
 
 
-  const revenueExpenses = useMemo(() => {
+  const revenueExpenses = useMemo(() => { //Revenue and expenses data
     return (
       data &&
       data[0].monthlyData.map(({ month, revenue, expenses }) => {
@@ -58,7 +58,7 @@ const Row1 = (props: Props) => {
   {/*Revenue and Profit */ }
 
 
-  const revenueProfit = useMemo(() => {
+  const revenueProfit = useMemo(() => { //Revenue and calc prift data
     return (
       data &&
       data[0].monthlyData.map(({ month, revenue, expenses }) => {
@@ -79,9 +79,11 @@ const Row1 = (props: Props) => {
 
   return (
     //Using the recharts
-    <>
+    <> 
+
+    {/*First Graph */}
       <DashboardBox gridArea="a">
-        <BoxHeader
+        <BoxHeader //Header elemnt of the graph
           title="Revenue and Expenses"
           subtitle="The green line represents the revenue, red line representes the expenses"
           sideText="4%"
@@ -99,7 +101,7 @@ const Row1 = (props: Props) => {
               bottom: 0,
             }}
           >
-            <defs>
+            <defs>  {/*Making the gradient */}
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
@@ -119,7 +121,8 @@ const Row1 = (props: Props) => {
               </linearGradient>
             </defs>
 
-            <XAxis
+
+            <XAxis //Months names
               dataKey="name"
               tickLine={false}
               style={{ fontSize: "10px" }}
@@ -152,7 +155,7 @@ const Row1 = (props: Props) => {
           </AreaChart>
         </ResponsiveContainer>
       </DashboardBox>
-
+     {/*second Graph */}
       <DashboardBox gridArea="b">
         <BoxHeader
           title="Profit and Revenue"
@@ -212,7 +215,7 @@ const Row1 = (props: Props) => {
           </LineChart>
         </ResponsiveContainer>
       </DashboardBox>
-
+       {/*Third Graph */}
       <DashboardBox gridArea="c">
 
         <BoxHeader
