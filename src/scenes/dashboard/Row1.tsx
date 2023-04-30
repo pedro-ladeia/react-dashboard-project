@@ -89,7 +89,7 @@ const Row1 = (props: Props) => {
           sideText="4%"
         />
         {/* height 100% is bugging, why?????????? */}
-        <ResponsiveContainer width="100%" height="84%">
+        <ResponsiveContainer width="100%" height="88%">
           <AreaChart
             width={500}
             height={400}
@@ -163,7 +163,7 @@ const Row1 = (props: Props) => {
           sideText="4%"
         />
         {/* height 100% is bugging, why?????????? */}
-        <ResponsiveContainer width="100%" height="84%">
+        <ResponsiveContainer width="100%" height="88%">
           <LineChart
 
             data={revenueProfit}
@@ -225,7 +225,7 @@ const Row1 = (props: Props) => {
         />
 
 
-        <ResponsiveContainer width="100%" height="84%">
+        <ResponsiveContainer width="100%" height="83%">
           <BarChart
             width={500}
             height={300}
