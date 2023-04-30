@@ -10,7 +10,7 @@ export interface Month {
     month: string;
     revenue: number;
     expenses: number;
-    operationalExpense: number;
+    operationalExpenses: number;
     nonOperationalExpenses: number;
 }
 
