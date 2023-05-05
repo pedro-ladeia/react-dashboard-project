@@ -12,16 +12,17 @@ const Row3 = () => {
   const { data: transactionData } = useGetTransactionsQuery();
   //console.log('data is: ', transactionData);
   // Taking the all data the row 3 needs
-  const productColumns = [
+  const productColumns = [ 
+    //Creting the columns of table 
     {
-      field: "_id",
-      headerName:"id",
-      flex: 1,
+      field: "_id", //The data of the column
+      headerName:"id", //Name of column
+      flex: 1, //Gap between columns
     },
     {
-      field: "expense",
-      headerName:"Expense",
-      flex: 0.5,
+      field: "expense", //The data of the column
+      headerName:"Expense", //Name of column
+      flex: 0.5, //Gap between columns
       renderCell: (params: GridCellParams) => `$${params.value}`
     },
     {
@@ -43,7 +44,8 @@ const Row3 = () => {
           mt="0.5rem"
           p="0 0.5rem"
           height="75%"
-          sx={{
+          sx={{ 
+            // Styling the default style of MUI in cells
             "& .MuiDataGrid-root": {
               color: palette.grey[300],
               border: "none"
@@ -63,8 +65,8 @@ const Row3 = () => {
           columnHeaderHeight={25}
           rowHeight={35}
           hideFooter={true}
-          rows={productData || []}
-          columns={productColumns}
+          rows={productData || []} //Adding the data on rows
+          columns={productColumns} //Seting the created Columns in columns of the grid
         />
         </Box>
       
