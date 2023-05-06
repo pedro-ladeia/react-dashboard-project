@@ -10,8 +10,9 @@ const Row3 = () => {
   const { data: kpiData } = useGetKpisQuery();
   const { data: productData } = useGetProductsQuery();
   const { data: transactionData } = useGetTransactionsQuery();
-  //console.log('data is: ', transactionData);
+  // console.log('data is: ', transactionData);
   // Taking the all data the row 3 needs
+
   const productColumns = [ 
     //Creting the columns of table 
     {
@@ -32,6 +33,34 @@ const Row3 = () => {
       renderCell: (params: GridCellParams) => `$${params.value}`
     }
   ]
+
+  const transactionColumns = [ 
+    //Creting the columns of table 
+    {
+      field: "_id", //The data of the column
+      headerName:"id", //Name of column
+      flex: 1, //Gap between columns
+    },
+    {
+      field: "buyer", //The data of the column
+      headerName:"Buyer", //Name of column
+      flex: 0.67, //Gap between columns
+    },
+    {
+      field: "amount",
+      headerName:"Amount",
+      flex: 0.35,
+      renderCell: (params: GridCellParams) => `$${params.value}`
+    },
+    {
+      field: "productIds",
+      headerName:"Count",
+      flex: 0.1,
+      renderCell: (params: GridCellParams) => (params.value as Array<string>).length,
+    }
+  ]
+
+
   return (
     <>
       <DashboardBox gridArea="g">
@@ -43,7 +72,7 @@ const Row3 = () => {
         <Box
           mt="0.5rem"
           p="0 0.5rem"
-          height="75%"
+          height="79%"
           sx={{ 
             // Styling the default style of MUI in cells
             "& .MuiDataGrid-root": {
@@ -73,6 +102,41 @@ const Row3 = () => {
       </DashboardBox>
 
       <DashboardBox gridArea="h">
+
+      <BoxHeader
+          title="Recent orders"
+          sideText={`${transactionData?.length} latest transactions`}
+        />
+
+        <Box
+          mt="1rem"
+          p="0 0.5rem"
+          height="83%"
+          sx={{ 
+            // Styling the default style of MUI in cells
+            "& .MuiDataGrid-root": {
+              color: palette.grey[300],
+              border: "none"
+            },
+            "& .MuiDataGrid-cell": {
+              borderBottom: `1px solid ${palette.grey[800]} !important`
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              borderBottom: `1px solid ${palette.grey[800]} !important`
+            },
+            "& .MuiDataGrid-columnSeparator": {
+              visibility: "hidden !important",
+            },
+          }}
+          >
+        <DataGrid 
+          columnHeaderHeight={25}
+          rowHeight={35}
+          hideFooter={true}
+          rows={transactionData || []} //Adding the data on rows
+          columns={transactionColumns} //Seting the created Columns in columns of the grid
+        />
+        </Box>
 
       </DashboardBox>
 
