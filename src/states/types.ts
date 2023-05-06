@@ -54,7 +54,7 @@ export interface GetTransactionsResponse {
     __v: number;
     buyer: string;
     amount: number;
-    productIds: Array<String>;
+    productIds: Array<string>;
     createdAt: string;
     updateAt: string;
 }
